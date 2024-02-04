@@ -8,5 +8,8 @@
         "psr-4": {
             "Contatoseguro\\TesteBackend\\": "src/"
         }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^7.0"
     }
 }
