@@ -45,9 +45,9 @@ Caso opte por usar o [Postman](https://www.postman.com/) o arquivo para importa�
 Abaixo, as solicitações do cliente:
 
 ### Categorias
-- [ ] A categoria está vindo errada na listagem de produtos para alguns casos
+- [x] A categoria está vindo errada na listagem de produtos para alguns casos
   (_exemplo: produto `blue trouser` está vindo na categoria `phone` e deveria ser `clothing`_);
-- [ ] Alguns produtos estão vindo com a categoria `null` ao serem pesquisados individualmente (_exemplo: produto `iphone 8`_);
+- [x] Alguns produtos estão vindo com a categoria `null` ao serem pesquisados individualmente (_exemplo: produto `iphone 8`_);
 - [ ] Cadastrei o produto `king size bed` em mais de uma categoria, mas ele aparece **apenas** na categoria `furniture` na busca individual do produto.
 
 ### Filtros e Ordenamento
@@ -82,3 +82,9 @@ Boa sorte! :)
 
 ## Suas Respostas, Duvidas e Observações
 [Adicione  aqui suas respostas, dúvidas e observações]
+
+
+Na segunda demanda não teria sentido o valor ser NULL e um jeito de resolver foi alterando o Banco de Dados. Segue abaixo a Query construída.
+
+- SELECT * FROM category WHERE company_id IS NULL;
+- UPDATE category SET company_id = 1 WHERE company_id IS NULL;
