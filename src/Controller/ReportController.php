@@ -56,7 +56,15 @@ class ReportController
         foreach ($data as $row) {
             $report .= "<tr>";
             foreach ($row as $column) {
-                $report .= "<td>{$column}</td>";
+                if (is_array($column)){
+                    $implodeValue = implode(",", array_map(function ($item){
+                        return "({$item->name}, {$item->action}, {$item->timestamp})";
+                    }, $column));
+                        $report .= "<td>{$implodeValue}</td>";
+                } else {
+                        $value = $column;
+                        $report .= "<td>{$value}</td>";
+                }
             }
             $report .= "</tr>";
         }
