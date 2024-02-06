@@ -52,12 +52,12 @@ Abaixo, as solicitações do cliente:
 
 ### Filtros e Ordenamento
 Para a listagem de produtos:
-- [ ] Gostaria de poder filtrar os produtos ativos e inativos;
-- [ ] Gostaria de poder filtrar os produtos por categoria;
-- [ ] Gostaria de poder ordenar os produtos por data de cadastro.
+- [x] Gostaria de poder filtrar os produtos ativos e inativos;
+- [x] Gostaria de poder filtrar os produtos por categoria;
+- [x] Gostaria de poder ordenar os produtos por data de cadastro.
 
 ### Relatório
-- [ ] O relatório não está mostrando a coluna de logs corretamente, se possível, gostaria de trazer no seguinte formato:
+- [x] O relatório não está mostrando a coluna de logs corretamente, se possível, gostaria de trazer no seguinte formato:
   (Nome do usuário, Tipo de alteração e Data),
   (Nome do usuário, Tipo de alteração e Data),
   (Nome do usuário, Tipo de alteração e Data)
@@ -67,10 +67,10 @@ Para a listagem de produtos:
   (Joe Doe, Remoção, 21/12/2023 14:52:50)
 
 ### Logs
-- [ ] Gostaria de saber qual usuário mudou o preço do produto `iphone 8` por último.
+- [x] Gostaria de saber qual usuário mudou o preço do produto `iphone 8` por último.
 
 ### Extra
-- [ ] Aqui fica um desafio extra **opcional**: _criar um ambiente com_ Docker _para a api_.
+- [x] Aqui fica um desafio extra **opcional**: _criar um ambiente com_ Docker _para a api_.
 
 **Seu trabalho é atender às 7 demandas solicitadas pelo cliente.**
 
@@ -88,3 +88,13 @@ Na segunda demanda não teria sentido o valor ser NULL e um jeito de resolver fo
 
 - SELECT * FROM category WHERE company_id IS NULL;
 - UPDATE category SET company_id = 1 WHERE company_id IS NULL;
+
+## Comentários 
+
+O desafio foi bem interessante e acredito que conseguia atender as demandas solicitadas. Diante das instruções deste desafio, inicialmente enfrentei alguns obstáculos para compreender as exigências e o procedimento necessário. No entanto, a dedicação e o estudo aprofundado, especialmente em PHP, me orientaram a decifrar a tarefa.
+
+Apesar da minha experiência inicial ser mediana com PHP, consegui simplificar o resultado final além das expectativas. Embora eu não estivesse totalmente familiarizado com a criação de uma API, após uma pesquisa extensa entre videos, blogs e sites, estou convencido de que o código está operando corretamente. Os testes foram feitos com Insomnia e a princípio estava operacional. Pulei uma demanda por tentar concluir as mais difíceis, pois achei que não teria tempo pela quantidade e por não esperar receber o desafio tão em seguida. 
+
+Os dias de estudos enquanto realizava a solicitação com certeza acrescentaram em muito o conhecimento adquirido, agradeço a oportunidade e espero que fiquem satisfeitos com o resultado assim como eu fiquei.
+
+**Atenciosamente**, Marcus Barcellos.
