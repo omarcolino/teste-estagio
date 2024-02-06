@@ -22,8 +22,10 @@ class ProductController
     public function getAll(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         $adminUserId = $request->getHeader('admin_user_id')[0];
-        
-        $stm = $this->service->getAll($adminUserId);
+        $queryParams = $request->getQueryParams();
+        $active = $queryParams['active'] ?? null;
+        $category = $queryParams['category'] ?? null;
+        $stm = $this->service->getAll($adminUserId, $category, $active);
         $response->getBody()->write(json_encode($stm->fetchAll()));
         return $response->withStatus(200);
     }

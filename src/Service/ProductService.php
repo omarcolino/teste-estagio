@@ -3,6 +3,7 @@
 namespace Contatoseguro\TesteBackend\Service;
 
 use Contatoseguro\TesteBackend\Config\DB;
+use PDO;
 
 class ProductService
 {
@@ -12,18 +13,39 @@ class ProductService
         $this->pdo = DB::connect();
     }
 
-    public function getAll($adminUserId)
-    {
+    public function getAll($adminUserId, $category = null, $active = null){
+
         $query = "
-            SELECT p.*, c.title as category
+            SELECT p.id, p.company_id, p.title, p.active, p.created_at
             FROM product p
             INNER JOIN product_category pc ON pc.product_id = p.id
-            INNER JOIN category c ON c.id = pc.cat_id
-            WHERE p.company_id = {$adminUserId}
         ";
+
+        if ($category !== null){
+            $query .= " INNER JOIN category c ON c.id = pc.cat_id";
+        }
+            $query .= " WHERE p.company_id = :adminUserId";
+
+        if ($category !== null) {
+            $query .= " AND c.title = :category ";
+        }
+
+        if ($active !== null) {
+            $query .= " AND p.active = :active";
+        }
+            $query .= " ORDER BY p.created_at ASC";
 
         $stm = $this->pdo->prepare($query);
 
+        $stm->bindParam(':adminUserId', $adminUserId, PDO::PARAM_INT);
+
+        if ($category !== null) {
+            $stm->bindParam(':category', $category, PDO::PARAM_STR);
+        }
+
+        if ($active !== null) {
+            $stm->bindParam(':active', $active, PDO::PARAM_INT);
+        }
         $stm->execute();
 
         return $stm;
@@ -154,9 +176,11 @@ class ProductService
     public function getLog($id)
     {
         $stm = $this->pdo->prepare("
-            SELECT *
+            SELECT product_log.*, au.name
             FROM product_log
+            INNER JOIN admin_user au ON product_log.admin_user_id = au.id
             WHERE product_id = {$id}
+
         ");
         $stm->execute();
 
